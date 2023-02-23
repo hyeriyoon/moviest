@@ -1,4 +1,4 @@
-import { favesRepo } from "../../global/globalVariables";
+import { favesRepo } from "../global/globalVariables";
 import { createSlice } from "@reduxjs/toolkit";
 
 function getFavourites() {

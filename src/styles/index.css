@@ -1,13 +1,473 @@
 body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(0, 0, 0);
+  color: white;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  min-width: 340px;
+}
+a,
+link,
+button {
+  cursor: pointer;
+}
+/**************** header ****************/
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+}
+.logo {
+  width: 7rem;
+  height: auto;
+}
+header > a {
+  z-index: 10;
+}
+/** hamburger **/
+.hamburgericon {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-0.4rem);
+}
+button {
+  background-color: transparent;
+  border: none;
+}
+.line {
+  background-color: white;
+  width: 45px;
+  height: 5px;
+  display: block;
+  margin-top: 8px;
+  border-radius: 1rem;
+}
+/** drop-down menu **/
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.nav-bar,
+a {
+  color: white;
+  text-decoration: none;
+}
+.nav-bar,
+li {
+  list-style: none;
+}
+.nav-bar ul {
+  background-color: rgba(0, 0, 0, 0.803);
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 0;
+  padding: 2.5rem 0;
+  line-height: 3rem;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 7rem;
+  line-height: 6rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media screen and (min-width: 45em) {
+  .hamburgericon {
+    display: none;
+  }
+  .nav-bar nav {
+    display: block;
+  }
+  .nav-bar ul {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: flex-end;
+    background-color: transparent;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(-3.5rem);
+  }
+  .nav-bar a:hover {
+    border-bottom: 5px rgb(255, 191, 0) solid;
+    transition: 0.3s;
+  }
+}
+/**********************************/
+
+/************* Home **************/
+h1 {
+  margin: 0;
+  font-size: 1.15rem;
+  max-height: 65px;
+}
+.home-return-section > div:first-child {
+  text-align: right;
+}
+.movie-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.movie-card > div {
+  /* border: solid 0.5px rgb(232, 232, 232); */
+  box-shadow: 1px 1px 10px rgb(85, 85, 85) inset;
+  border-width: 100%;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.movie-info {
+  padding: 1rem;
+}
+.movie-poster {
+  width: 100%;
+}
+main {
+  padding: 0 1rem;
+}
+.movie-sorting {
+  border: solid 1.5px rgb(232, 232, 232);
+  border-radius: 0.2rem;
+  width: 10rem;
+  height: 2rem;
+  font-size: 1.3rem;
+  background-color: black;
+  color: white;
+  margin-bottom: 0.5rem;
+  right: 0;
+}
+.movie-sorting li {
+  background-color: black;
+  color: white;
+}
+
+.truncate {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.notTruncate {
+  display: block;
+}
+
+.btn-favourite path {
+  fill: red;
+}
+.btn-unfavourite path {
+  fill: white;
+}
+.titleAndFav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  height: 65px;
+}
+.movie-info p {
+  margin: 0.5rem;
+  line-height: 1.5rem;
+}
+
+@media screen and (min-width: 45em) {
+  /* 720px */
+
+  main {
+    margin: 2rem;
+  }
+  .movie-card {
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 1rem;
+  }
+  .movie-card > div {
+    /* max-width: 15rem; */
+    border: none;
+    margin: 0.5rem;
+    position: relative;
+  }
+  .movie-card > div:hover .movie-poster {
+    opacity: 30%;
+  }
+
+  .movie-poster {
+    box-shadow: 1.5px 1px 7px rgb(85, 85, 85);
+    border-radius: 0.5rem;
+  }
+  .movie-info {
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+  }
+  .movie-info h1 {
+    font-size: 1rem;
+  }
+  .movie-info p {
+    font-size: 0.8rem;
+    line-height: 1rem;
+    margin: 0.5rem;
+  }
+  .more-info-btn {
+    position: absolute;
+    bottom: 0.5rem;
+    transform: scale(0.8);
+    right: 0.5rem;
+  }
+  .truncate {
+    visibility: hidden;
+  }
+  @media screen and (min-width: 60em) {
+    /* 960px */
+    .movie-info h1 {
+      font-size: 1.2rem;
+    }
+    .movie-info p {
+      font-size: 1rem;
+      line-height: 1.4rem;
+      margin: 0.5rem 0;
+    }
+    .more-info-btn {
+      transform: scale(1);
+      bottom: 0.3rem;
+    }
+    .truncate {
+      visibility: visible;
+    }
+  }
+  @media screen and (min-width: 80em) {
+    /* 1280px */
+    .movie-info {
+      margin: 0 1rem;
+    }
+    .movie-info h1 {
+      font-size: 1.35rem;
+    }
+    .movie-info p {
+      font-size: 1.1rem;
+      line-height: 1.7rem;
+      margin: 1rem 0;
+    }
+    .more-info-btn {
+      transform: scale(1.1);
+      bottom: 1rem;
+    }
+  }
+}
+
+/***********************************/
+
+/************* About **************/
+.about {
+  margin: 2rem auto;
+  max-width: 600px;
+  left: 0;
+  right: 0;
+}
+.about p {
+  color: white;
+  line-height: 1.5rem;
+  padding: 2rem 3rem;
+}
+h2 {
+  color: white;
+  text-align: right;
+  border-bottom: 2px solid white;
+  padding: 0 1.5rem 1rem 0;
+  font-size: 2rem;
+  margin: 0 2rem;
+}
+.aboutDiv {
+  margin: 0 2.2rem;
+}
+.tmdb img {
+  width: 5rem;
+}
+.tmdb {
+  display: flex;
+  padding-right: 3rem;
+  justify-content: center;
+}
+.tmdb p {
+  width: 50%;
+  padding-right: 1rem;
+}
+/***********************************/
+/************* Favourite ***********/
+.favourite {
+  max-width: 600px;
+  margin: 2rem auto 10rem;
+}
+.favourite p {
+  color: white;
+  line-height: 1.5rem;
+  padding: 2rem 3rem;
+}
+
+/***********************************/
+/************* Single **************/
+/* Movie */
+.page-single {
+  /* margin: 0 5rem; */
+}
+.a-movie-poster {
+  width: 100%;
+  /* border-radius: .5rem; */
+}
+.a-titleAndFav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+.a-movie-info p {
+  margin: 0.5rem 0;
+}
+.a-overview {
+  line-height: 1.3rem;
+}
+.title-cast,
+.title-overview {
+  color: rgb(255, 191, 0);
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+.a-date-rating {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.cast img{
+  max-width:200px;
+}
+
+@media screen and (min-width: 45em) {
+  .a-titleAndFav {
+    margin: 0;
+  }
+}
+
+/* Casting */
+.section-cast:not(first-child) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.title-cast {
+  grid-column: 1 / 3;
+}
+.cast {
+  margin: 0;
+  text-align: center;
+}
+.cast img {
+  width: 20rem;
+}
+.cast-name {
+  font-weight: 800;
+  font-size: 1.125rem;
+}
+
+.cast-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cast-name,
+.cast-char {
+  margin: 0;
+  width: 100%;
+}
+
+.cast-char {
+  padding-bottom: 1rem;
+}
+@media screen and (min-width: 45em) {
+  /****** SINGLE *****/
+  .page-single {
+    margin: 2rem;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  .a-movie-card {
+    display: flex;
+    width: 100%;
+  }
+  .a-movie-poster {
+    width: 20rem;
+    height: auto;
+  }
+  .a-movie-info {
+    width: 60%;
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .cast-wrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .title-cast {
+    width: 100rem;
+  }
+  .cast-name {
+    font-size: 1rem;
+  }
+
+  .wrapper .page-single {
+  }
+
+  .cast img {
+    /* margin-top: 2rem; */
+    width: 9rem;
+    padding-right: 1rem;
+  }
+}
+
+/***********************************/
+/************* Footer **************/
+footer {
+  color: white;
+  text-align: center;
+  margin: 2rem;
+}
+/***********************************/
+
+/************* Get Movies **************/
+.more-info-btn {
+  border-bottom: 2px solid white;
+  float: right;
+  width: 98px;
+  text-align: center;
+  padding: 0.4rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.more-info-btn:hover {
+  color: rgb(255, 191, 0);
+  border-bottom: 2px solid rgb(255, 191, 0);
+}
+
+.activated {
+  display: none;
+}
+/***********************************/
+
+.rating {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 0;
+}
+@media screen and (min-width: 45em) {
 }

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import favesReducer from "../features/faves/favesSlice";
+import favesReducer from "../features/favesSlice";
 
 export default configureStore({
   reducer: {
